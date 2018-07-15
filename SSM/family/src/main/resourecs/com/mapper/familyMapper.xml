@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.mapper.familyMapper">
+
+    <resultMap id="getBook" type="com.mapper.entity.familyBookFile">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="familyperson" javaType="com.mapper.entity.familyPerson">
+            <result property="person_name" column="person_name"/>
+        </association>
+    </resultMap>
+
+    <select id="seleteFamilyInfo" parameterType="int" resultMap="getBook">
+        SELECT b1.id,b1.name,p1.person_name FROM three AS t1
+        INNER JOIN bookFile AS b1 ON t1.book_id=b1.id
+        INNER JOIN person AS p1 ON p1.person_id=t1.person_id
+        WHERE p1.person_id=#{info}
+</select>
+
+    <resultMap id="setBook" type="com.mapper.entity.familyBookFile">
+        <result property="familyperson.person_name" column="person_name"/>
+    </resultMap>
+
+    <select id="seleteFamily" resultMap="setBook" parameterType="int">
+        SELECT b1.id,b1.name,p1.person_name FROM three AS t1
+        INNER JOIN bookFile AS b1 ON t1.book_id=b1.id
+        INNER JOIN person AS p1 ON p1.person_id=t1.person_id
+        WHERE b1.id=#{id} OR b1.id=#{person_id}
+    </select>
+</mapper>
