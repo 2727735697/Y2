@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.sz.most.Girl" id="girl">
+        <property name="colour">
+            <list>
+                <value>List</value>
+                <value>蓝色</value>
+                <value>黑色</value>
+                <value>紫色</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.sz.most.Girl" id="girl2">
+        <property name="animal">
+            <array>
+                <value>String[]</value>
+                <value>小狗</value>
+                <value>小猫</value>
+                <value>小鸡</value>
+            </array>
+        </property>
+    </bean>
+
+    <bean class="com.sz.most.Girl" id="girl3">
+        <property name="userSet">
+            <set>
+                <bean class="com.sz.bean.User">
+                    <property name="name" value="邪魂"/>
+                    <property name="word" value="一天不敲代码，浑身难受！"/>
+                </bean>
+                <bean class="com.sz.bean.User">
+                    <property name="name" value="血杀"/>
+                    <property name="word" value="一天不看书，性命难保！"/>
+                </bean>
+                <bean class="com.sz.bean.User">
+                    <property name="name" value="B哥"/>
+                    <property name="word" value="一天不吹牛皮，嘴巴痒痒！"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+</beans>
